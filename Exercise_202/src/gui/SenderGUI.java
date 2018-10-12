@@ -5,6 +5,7 @@
  */
 package gui;
 
+import bl.Sender;
 import bl.SenderTableModel;
 import bl.SenderTableRenderer;
 
@@ -22,7 +23,9 @@ public class SenderGUI extends javax.swing.JFrame {
         table.setModel(bl);
         table.setDefaultRenderer(Object.class, new SenderTableRenderer());
         
-        
+        bl.add(new Sender("Oe3", 89.20, "FM"));
+        bl.add(new Sender("Antenne", 99.10, "FM"));
+        bl.add(new Sender("Radio A1", 194.60, "AM"));
     }
 
     /**
@@ -41,13 +44,10 @@ public class SenderGUI extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(table);

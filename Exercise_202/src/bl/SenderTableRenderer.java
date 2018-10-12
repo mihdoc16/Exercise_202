@@ -23,8 +23,11 @@ public class SenderTableRenderer implements TableCellRenderer{
             label.setOpaque(true);
             
             switch(column){
-                
+                case 0: label.setText(s.getSender());break;
+                case 1: label.setText(String.valueOf(s.getFrequenz()));break;
+                case 2: label.setText(s.getBand());break;
             }
+            return label;
     }
     
 }

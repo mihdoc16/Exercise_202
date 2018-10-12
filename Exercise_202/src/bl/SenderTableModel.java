@@ -16,7 +16,7 @@ public class SenderTableModel extends AbstractTableModel{
     private static String[] colNames = {"Sender", "Frequenz", "Band"};
     private ArrayList<Sender> sender = new ArrayList<>();
     
-    private void add(Sender s){
+    public void add(Sender s){
         sender.add(s);
         fireTableRowsInserted(sender.size()-1, sender.size()-1);
     }
@@ -33,7 +33,7 @@ public class SenderTableModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int i, int i1) {
-        return sender.get(i).getColValue(i1);
+        return sender.get(i);
     }
     
 }
