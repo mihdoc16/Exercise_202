@@ -16,6 +16,11 @@ public class SenderTableModel extends AbstractTableModel{
     private static String[] colNames = {"Sender", "Frequenz", "Band"};
     private ArrayList<Sender> sender = new ArrayList<>();
     
+    private void add(Sender s){
+        sender.add(s);
+        fireTableRowsInserted(sender.size()-1, sender.size()-1);
+    }
+    
     @Override
     public int getRowCount() {
         return sender.size();
@@ -28,7 +33,7 @@ public class SenderTableModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int i, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sender.get(i).getColValue(i1);
     }
     
 }
