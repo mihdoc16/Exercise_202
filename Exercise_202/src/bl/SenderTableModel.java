@@ -6,6 +6,7 @@
 package bl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -22,6 +23,11 @@ public class SenderTableModel extends AbstractTableModel{
     }
     
     @Override
+    public String getColumnName(int column) {
+        return colNames[column];
+    }
+    
+    @Override
     public int getRowCount() {
         return sender.size();
     }
@@ -34,6 +40,28 @@ public class SenderTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int i, int i1) {
         return sender.get(i);
+    }
+    
+    public void numCols(int numCols){
+        colNames = new String[numCols];
+//        for (int i = 0; i < numCols; i++) {
+//            colNames[i] = colNames[i];
+//        }
+        if(numCols==2){
+            colNames[0] = "Sender";
+            colNames[1] = "Frequenz";
+        }
+        else{
+            colNames[0] = "Sender";
+            colNames[1] = "Frequenz";
+            colNames[2] = "Band";
+        }
+        fireTableStructureChanged();
+    }
+    
+    public void sort(){
+        Collections.sort(sender);
+        fireTableRowsUpdated(0,sender.size()-1);
     }
     
 }

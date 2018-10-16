@@ -5,6 +5,7 @@
  */
 package bl;
 
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -21,6 +22,11 @@ public class SenderTableRenderer implements TableCellRenderer{
             Sender s = (Sender) o;
             JLabel label = new JLabel();
             label.setOpaque(true);
+            if(s.getBand().equals("FM")){
+                label.setBackground(Color.red);
+            }else{
+                label.setBackground(Color.blue);
+            }
             
             switch(column){
                 case 0: label.setText(s.getSender());break;
