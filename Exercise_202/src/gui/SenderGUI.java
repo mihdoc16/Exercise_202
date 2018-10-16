@@ -23,9 +23,11 @@ public class SenderGUI extends javax.swing.JFrame {
         table.setModel(bl);
         table.setDefaultRenderer(Object.class, new SenderTableRenderer());
         
-        bl.add(new Sender("Oe3", 89.20, "FM"));
-        bl.add(new Sender("Antenne", 99.10, "FM"));
-        bl.add(new Sender("Radio A1", 194.60, "AM"));
+        bl.add(new Sender("Oe3", 194.20, "FM"));
+        bl.add(new Sender("Antenne", 70.10, "FM"));
+        bl.add(new Sender("Radio A1", 120.60, "AM"));
+        
+        bl.sort();
     }
 
     /**
@@ -37,8 +39,36 @@ public class SenderGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pmPopup = new javax.swing.JPopupMenu();
+        miHinzufügen = new javax.swing.JMenuItem();
+        miHide = new javax.swing.JMenuItem();
+        miShow = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
+
+        miHinzufügen.setText("Hinzufügen");
+        miHinzufügen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miHinzufügenActionPerformed(evt);
+            }
+        });
+        pmPopup.add(miHinzufügen);
+
+        miHide.setText("Band Verstecken");
+        miHide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miHideActionPerformed(evt);
+            }
+        });
+        pmPopup.add(miHide);
+
+        miShow.setText("Band Anzeigen");
+        miShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miShowActionPerformed(evt);
+            }
+        });
+        pmPopup.add(miShow);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +80,7 @@ public class SenderGUI extends javax.swing.JFrame {
 
             }
         ));
+        table.setComponentPopupMenu(pmPopup);
         jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,6 +96,25 @@ public class SenderGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void miHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miHinzufügenActionPerformed
+        SenderDialog dl = new SenderDialog(this,true);
+        dl.setVisible(true);
+        
+        if(dl.isOk()){
+            Sender s = dl.getSender();
+            bl.add(s);
+            bl.sort();
+        }
+    }//GEN-LAST:event_miHinzufügenActionPerformed
+
+    private void miHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miHideActionPerformed
+        bl.numCols(2);
+    }//GEN-LAST:event_miHideActionPerformed
+
+    private void miShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miShowActionPerformed
+        bl.numCols(3);
+    }//GEN-LAST:event_miShowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,6 +153,10 @@ public class SenderGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem miHide;
+    private javax.swing.JMenuItem miHinzufügen;
+    private javax.swing.JMenuItem miShow;
+    private javax.swing.JPopupMenu pmPopup;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
